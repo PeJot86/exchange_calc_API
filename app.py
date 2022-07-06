@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import requests
 import datetime
 
+from sqlalchemy import null
+
 items=["PLN", "PLN"]
 
 response = requests.get('http://api.nbp.pl/api/exchangerates/tables/A?format=json')
@@ -16,6 +18,12 @@ for rate in rates:
 
 
 app = Flask(__name__)
+
+
+@app.route("/", methods=["GET"])
+def home():
+    euro = (exchange_rate_mid["EUR"])
+    return render_template("exchange.html", euro=euro)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -45,10 +53,11 @@ def date_time ():
 
 @app.context_processor
 def home():
-    choice_quantity = "Wpisz kwotę:"
+    choice_quantity = ""
     choice_have_currency = items[-2]
     choice_want_currency = items[-1]
-    return dict(choice_quantity=choice_quantity, choice_have_currency=choice_have_currency,choice_want_currency=choice_want_currency )
+    number = 1
+    return dict(choice_quantity=choice_quantity, choice_have_currency=choice_have_currency,choice_want_currency=choice_want_currency, number=number )
 
 
 if __name__ == '__main__':
