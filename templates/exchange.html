@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+{% set active_page = "buy" %}
+{% block content %}
+
+<center><h3>Kalkulator walutowy</h3>
+
+<body><form method="POST" action=""> 
+
+<p> 1 {{choice_have_currency}} = {{heading}} {{choice_want_currency}} według średniego kursu NBP z dn. {{day}}.{{month}}.{{year}} r.</p>
+</br>
+
+<div class="col-sm-7">
+    <input type="number" class="form-control" placeholder="Kwota:" value={{choice_quantity}} aria-label="" id="validationCustom01"  name="number" required><br>
+    </div>
+<label for="have_currency">Mam:</label>
+</br>
+<select name="have_currency" id="currency">
+<option value="PLN"{{'selected' if choice_have_currency=="PLN"}}>PLN - Polska</option>
+<option value="USD"{{'selected' if choice_have_currency=="USD"}}>USD - USA</option>
+<option value="AUD"{{'selected' if choice_have_currency=="AUD"}}>AUD - Australia</option>
+<option value="CAD"{{'selected' if choice_have_currency=="CAD"}}>CAD - Kanada</option>
+<option value="EUR"{{'selected' if choice_have_currency=="EUR"}}>EUR - Unia Europejska</option>
+<option value="HUF"{{'selected' if choice_have_currency=="HUF"}}>HUF - Węgry</option>
+<option value="CHF"{{'selected' if choice_have_currency=="CHF"}}>CHF - Szwajcaria</option>
+<option value="GBP"{{'selected' if choice_have_currency=="GBP"}}>GBP - W. Brytania</option>
+<option value="JPY"{{'selected' if choice_have_currency=="JPY"}}>JPY - Japonia</option>
+<option value="CZK"{{'selected' if choice_have_currency=="CZK"}}>CZK - Czechy</option>
+<option value="DKK"{{'selected' if choice_have_currency=="DKK"}}>DKK - Dania</option>
+<option value="NOK"{{'selected' if choice_have_currency=="NOK"}}>NOK - Norwegia</option>
+<option value="SEK"{{'selected' if choice_have_currency=="SEK"}}>SEK - Szwecja</option>
+<option value="XDR"{{'selected' if choice_have_currency=="XDR"}}>XDR - SDR </option>
+</select>
+</br>
+</br>
+<label for="want_currency">Chcę kupić:</label>
+</br>
+<select name="want_currency" id="currency">
+    <option value="PLN"{{'selected' if choice_want_currency=="PLN"}}>PLN - Polska</option>
+    <option value="USD"{{'selected' if choice_want_currency=="USD"}}>USD - USA</option>
+    <option value="AUD"{{'selected' if choice_want_currency=="AUD"}}>AUD - Australia</option>
+    <option value="CAD"{{'selected' if choice_want_currency=="CAD"}}>CAD - Kanada</option>
+    <option value="EUR"{{'selected' if choice_want_currency=="EUR"}}>EUR - Unia Europejska</option>
+    <option value="HUF"{{'selected' if choice_want_currency=="HUF"}}>HUF - Węgry</option>
+    <option value="CHF"{{'selected' if choice_want_currency=="CHF"}}>CHF - Szwajcaria</option>
+    <option value="GBP"{{'selected' if choice_want_currency=="GBP"}}>GBP - W. Brytania</option>
+    <option value="JPY"{{'selected' if choice_want_currency=="JPY"}}>JPY - Japonia</option>
+    <option value="CZK"{{'selected' if choice_want_currency=="CZK"}}>CZK - Czechy</option>
+    <option value="DKK"{{'selected' if choice_want_currency=="DKK"}}>DKK - Dania</option>
+    <option value="NOK"{{'selected' if choice_want_currency=="NOK"}}>NOK - Norwegia</option>
+    <option value="SEK"{{'selected' if choice_want_currency=="SEK"}}>SEK - Szwecja</option>
+    <option value="XDR"{{'selected' if choice_want_currency=="XDR"}}>XDR - SDR </option>
+</select>
+</br>
+</br>
+
+<button type="submit"  class="btn btn-primary">Policz</button>
+
+</form>
+</br>
+<h3>{{choice_quantity}} {{choice_have_currency}} = {{result}} {{choice_want_currency}}</h3>
+</center>
+</body>
+
+{% endblock %}
